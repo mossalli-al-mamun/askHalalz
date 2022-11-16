@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B04C30F1E1A60FB435F2061 /* libPods-Discourse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 431021E0869CE9E251F30339 /* libPods-Discourse.a */; };
+		05B556B42F454BD01CE35E0B /* libPods-Discourse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ECD285A09E6703C394A4C7C /* libPods-Discourse.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -58,7 +58,9 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Discourse/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Discourse/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Discourse/main.m; sourceTree = "<group>"; };
-		431021E0869CE9E251F30339 /* libPods-Discourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Discourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ECD285A09E6703C394A4C7C /* libPods-Discourse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Discourse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FDCB336940496E1306D2FE2 /* Pods-Discourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discourse.debug.xcconfig"; path = "Target Support Files/Pods-Discourse/Pods-Discourse.debug.xcconfig"; sourceTree = "<group>"; };
+		891593C8B0DBFF402091575D /* Pods-Discourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discourse.release.xcconfig"; path = "Target Support Files/Pods-Discourse/Pods-Discourse.release.xcconfig"; sourceTree = "<group>"; };
 		B52583FD1E5551D7001E9B7C /* nav-icon-gray@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav-icon-gray@3x.png"; path = "../img/nav-icon-gray@3x.png"; sourceTree = "<group>"; };
 		B587A4F11E5549B8003AAE26 /* Discourse.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = Discourse.entitlements; path = Discourse/Discourse.entitlements; sourceTree = "<group>"; };
 		BD11887223DB333D00A2EFC9 /* RNBackgroundFetch+AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "RNBackgroundFetch+AppDelegate.m"; path = "../node_modules/react-native-background-fetch/ios/RNBackgroundFetch/RNBackgroundFetch+AppDelegate.m"; sourceTree = "<group>"; };
@@ -71,10 +73,8 @@
 		BDC4F767248B48BC00785AF9 /* Discourse-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Discourse-Bridging-Header.h"; sourceTree = "<group>"; };
 		BDC4F76C248B4F9C00785AF9 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		BDEA363422D818BC0040787F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		C78F74B0B169EF82BF34D3E0 /* Pods-Discourse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discourse.debug.xcconfig"; path = "Target Support Files/Pods-Discourse/Pods-Discourse.debug.xcconfig"; sourceTree = "<group>"; };
 		D09E47551F2C996500AFDCBE /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		D09E477F1F2C9D6100AFDCBE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E5DEEAEEE972B25699649F0A /* Pods-Discourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discourse.release.xcconfig"; path = "Target Support Files/Pods-Discourse/Pods-Discourse.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -87,7 +87,7 @@
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				D09E47801F2C9D6100AFDCBE /* AVFoundation.framework in Frameworks */,
 				D09E47561F2C996500AFDCBE /* Photos.framework in Frameworks */,
-				0B04C30F1E1A60FB435F2061 /* libPods-Discourse.a in Frameworks */,
+				05B556B42F454BD01CE35E0B /* libPods-Discourse.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,8 +124,8 @@
 		5F7C845A806F17459E43BA78 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C78F74B0B169EF82BF34D3E0 /* Pods-Discourse.debug.xcconfig */,
-				E5DEEAEEE972B25699649F0A /* Pods-Discourse.release.xcconfig */,
+				2FDCB336940496E1306D2FE2 /* Pods-Discourse.debug.xcconfig */,
+				891593C8B0DBFF402091575D /* Pods-Discourse.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -180,7 +180,7 @@
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				D09E477F1F2C9D6100AFDCBE /* AVFoundation.framework */,
 				D09E47551F2C996500AFDCBE /* Photos.framework */,
-				431021E0869CE9E251F30339 /* libPods-Discourse.a */,
+				2ECD285A09E6703C394A4C7C /* libPods-Discourse.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -207,14 +207,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Discourse" */;
 			buildPhases = (
-				137E00CD5901AD7E055D9D11 /* [CP] Check Pods Manifest.lock */,
+				60D40211FD52FA02487AE1D8 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				46BE464AA78FA84C725A55DC /* [CP] Copy Pods Resources */,
 				BD9F666823F5B02C001001B3 /* Embed App Extensions */,
-				C8B4DF2FD78BE1B20F8D6872 /* [CP] Embed Pods Frameworks */,
+				61A4D252FEC0E982FEA651D5 /* [CP] Embed Pods Frameworks */,
+				639B0693A0DC16C6A8378A2C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,7 +321,7 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		137E00CD5901AD7E055D9D11 /* [CP] Check Pods Manifest.lock */ = {
+		60D40211FD52FA02487AE1D8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -343,7 +343,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		46BE464AA78FA84C725A55DC /* [CP] Copy Pods Resources */ = {
+		61A4D252FEC0E982FEA651D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Discourse/Pods-Discourse-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Discourse/Pods-Discourse-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		639B0693A0DC16C6A8378A2C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -391,28 +413,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Discourse/Pods-Discourse-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C8B4DF2FD78BE1B20F8D6872 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Discourse/Pods-Discourse-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flipper-DoubleConversion/double-conversion.framework/double-conversion",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/hermes-engine/hermes.framework/hermes",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/double-conversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/hermes.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Discourse/Pods-Discourse-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -471,7 +471,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C78F74B0B169EF82BF34D3E0 /* Pods-Discourse.debug.xcconfig */;
+			baseConfigurationReference = 2FDCB336940496E1306D2FE2 /* Pods-Discourse.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -514,7 +514,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5DEEAEEE972B25699649F0A /* Pods-Discourse.release.xcconfig */;
+			baseConfigurationReference = 891593C8B0DBFF402091575D /* Pods-Discourse.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

@@ -56,7 +56,7 @@ class SettingsScreen extends React.Component {
         this.setState({androidCustomTabs: true});
       } else {
         AsyncStorage.removeItem('@Discourse.androidCustomTabs');
-        this.setState({androidCustomTabs: false});
+        this.setState({androidCustomTabs: true});
       }
     });
   }

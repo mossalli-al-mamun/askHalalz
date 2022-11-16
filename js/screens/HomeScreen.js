@@ -49,9 +49,12 @@ class HomeScreen extends React.Component {
   }
 
   visitSite(site, connect = false, endpoint = '') {
+    console.log('The site....', site);
     this._siteManager.setActiveSite(site);
 
     if (site.authToken) {
+      console.log('The site....11', site);
+
       if (site.oneTimePassword) {
         this.props.screenProps.openUrl(
           `${site.url}/session/otp/${site.oneTimePassword}`,
@@ -70,14 +73,22 @@ class HomeScreen extends React.Component {
     }
 
     if (connect || site.loginRequired) {
+      console.log('the site.....1');
+
       this._siteManager.generateAuthURL(site).then(url => {
+        console.log('the site.....1222333');
         if (this._siteManager.supportsDelegatedAuth(site)) {
+          console.log('the site.....1222444');
           SafariWebAuth.requestAuth(url);
         } else {
+          console.log('the site.....1222');
+
           this.props.screenProps.openUrl(url, false);
         }
       });
     } else {
+      console.log('the site.....2', url);
+
       this.donateShortcut(site);
       this.props.screenProps.openUrl(`${site.url}`);
     }
@@ -109,6 +120,8 @@ class HomeScreen extends React.Component {
   componentDidMount() {
     this._siteManager.subscribe(this._onChangeSites);
     this._onChangeSites();
+    console.log('the item : ', this.state.data);
+    // this.visitSite(this.state.data[0], true);
   }
 
   componentWillUnmount() {
@@ -116,10 +129,14 @@ class HomeScreen extends React.Component {
   }
 
   onChangeSites(e) {
+    console.log('Hello....', this._siteManager.listSites());
     if (this._siteManager.isLoading() !== this.state.loadingSites) {
+      console.log('Site...1', e);
       this.setState({loadingSites: this._siteManager.isLoading()});
     }
     if (e && e.event) {
+      console.log('Site...12', e);
+
       this.setState({data: this._siteManager.listSites()});
     }
   }
@@ -134,6 +151,7 @@ class HomeScreen extends React.Component {
     return new Promise((resolve, reject) => {
       Site.fromTerm(term)
         .then(site => {
+          console.log('The input site..', site);
           this.setState(
             {
               displayTermBar: false,
@@ -145,6 +163,7 @@ class HomeScreen extends React.Component {
           );
 
           if (site) {
+            console.log('the item.....', site);
             if (this._siteManager.exists(site)) {
               throw 'dupe site';
             }
@@ -215,6 +234,7 @@ class HomeScreen extends React.Component {
   }
 
   _renderItem({item, index, move, moveEnd, isActive}) {
+    console.log('The.....', item);
     return (
       <Components.SiteRow
         site={item}
@@ -232,6 +252,7 @@ class HomeScreen extends React.Component {
   }
 
   _renderSites() {
+    console.log('The data.....', this.state.data);
     const theme = this.context;
     if (this.state.loadingSites) {
       return <View style={{flex: 1}} />;

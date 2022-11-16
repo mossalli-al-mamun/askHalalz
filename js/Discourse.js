@@ -203,8 +203,69 @@ class Discourse extends React.Component {
     }
   }
 
+  doSearch(term) {
+    if (term.length === 0) {
+      return new Promise((resolve, reject) => reject());
+    }
+
+    // this.setState({addSiteProgress: Math.random() * 0.4});
+
+    return new Promise((resolve, reject) => {
+      Site.fromTerm(term)
+        .then(site => {
+          if (site) {
+            this._siteManager.add(site);
+          }
+
+          resolve(site);
+        })
+        .catch(e => {
+          console.log(e);
+
+          // if (e === 'dupe site') {
+          //   Alert.alert(i18n.t('term_exists', {term}));
+          // } else if (e === 'bad api') {
+          //   Alert.alert(i18n.t('incorrect_url', {term}));
+          // } else {
+          //   Alert.alert(i18n.t('not_found', {term}));
+          // }
+
+          // this.setState({displayTermBar: true, addSiteProgress: 1});
+          // this.onToggleTermBar(this.state.displayTermBar);
+
+          reject('failure');
+        })
+        .finally(() => {
+          setTimeout(() => {
+            // this.setState({addSiteProgress: 0});
+          }, 1000);
+        })
+        .done();
+    });
+  }
+
+  _handleSetSite() {
+    this.doSearch('https://ask.halalz.org');
+    let site = this._siteManager.listSites();
+    // console.log('the site.....dis 1', site);
+
+    // this._siteManager.setActiveSite(site);
+    // this._siteManager.generateAuthURL(site).then(url => {
+    //   console.log('the site.....dis', url);
+    //   if (this._siteManager.supportsDelegatedAuth(site)) {
+    //     console.log('the site.....dis2');
+    //     SafariWebAuth.requestAuth(url);
+    //   } else {
+    //     console.log('the site.....dis3');
+
+    //     this.props.screenProps.openUrl(url, false);
+    //   }
+    // });
+  }
+
   _handleOpenUrl(event) {
     console.log('_handleOpenUrl', event);
+    this.openUrl('https://ask.halalz.org/');
 
     if (event.url.startsWith('discourse://')) {
       let params = this.parseURLparameters(event.url);
@@ -239,7 +300,6 @@ class Discourse extends React.Component {
       // handle site URL passed via app-argument
       if (params.siteUrl) {
         if (this._siteManager.exists({url: params.siteUrl})) {
-          console.log(`${params.siteUrl} exists!`);
           this.openUrl(params.siteUrl);
         } else {
           console.log(`${params.siteUrl} does not exist, attempt adding`);
@@ -274,6 +334,9 @@ class Discourse extends React.Component {
   }
 
   componentDidMount() {
+    console.log('the yyyyyy ');
+    // this._handleSetSite();
+    // this._handleOpenUrl({url: 'https://ask.halalz.org/'});
     AppState.addEventListener('change', this._handleAppStateChange);
     Linking.addEventListener('url', this._handleOpenUrl);
     Linking.getInitialURL().then(url => {
@@ -418,6 +481,7 @@ class Discourse extends React.Component {
   }
 
   openUrl(url, supportsDelegatedAuth = true) {
+    console.log('the url fired');
     if (Platform.OS === 'ios') {
       if (!supportsDelegatedAuth) {
         this.safariViewTimeout = setTimeout(() => SafariView.show({url}), 400);
@@ -466,6 +530,7 @@ class Discourse extends React.Component {
       deviceId: this.state.deviceId,
       toggleTheme: this._toggleTheme.bind(this),
     };
+    this._handleSetSite();
 
     return (
       <NavigationContainer>
@@ -481,9 +546,14 @@ class Discourse extends React.Component {
                 ...TransitionPresets.ModalSlideFromBottomIOS,
               };
             }}>
-            <Stack.Screen name="Home">
+            {/* <Stack.Screen name="Home">
               {props => (
                 <Screens.Home {...props} screenProps={{...screenProps}} />
+              )}
+            </Stack.Screen> */}
+            <Stack.Screen name="WebView">
+              {props => (
+                <Screens.WebView {...props} screenProps={{...screenProps}} />
               )}
             </Stack.Screen>
             <Stack.Screen name="Notifications">
@@ -497,11 +567,6 @@ class Discourse extends React.Component {
             <Stack.Screen name="Settings">
               {props => (
                 <Screens.Settings {...props} screenProps={{...screenProps}} />
-              )}
-            </Stack.Screen>
-            <Stack.Screen name="WebView">
-              {props => (
-                <Screens.WebView {...props} screenProps={{...screenProps}} />
               )}
             </Stack.Screen>
           </Stack.Navigator>

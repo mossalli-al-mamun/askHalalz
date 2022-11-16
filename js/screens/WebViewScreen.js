@@ -65,7 +65,7 @@ class WebViewScreen extends React.Component {
       layoutCalculated: false,
       hasNotch: this.props.screenProps.hasNotch,
       isLandscape: false,
-      webviewUrl: this.props.route.params.url,
+      webviewUrl: 'https://ask.halalz.org/',
     };
   }
 
@@ -88,15 +88,16 @@ class WebViewScreen extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    const url = this.props.route.params.url;
+  // componentDidUpdate() {
+  //   const url = this.props.route.params.url;
+  //   console.log('The url is....1', url);
 
-    if (url !== this.state.webviewUrl) {
-      this.setState({
-        webviewUrl: url,
-      });
-    }
-  }
+  //   if (url !== this.state.webviewUrl) {
+  //     this.setState({
+  //       webviewUrl: url,
+  //     });
+  //   }
+  // }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (nextState.headerBg !== this.state.headerBg) {
@@ -142,6 +143,7 @@ class WebViewScreen extends React.Component {
   render() {
     const theme = this.context;
     const isIpad = this.props.screenProps.deviceId.startsWith('iPad');
+    console.log('Test url ...', this.state.webviewUrl);
 
     return (
       <Animated.View
@@ -164,7 +166,7 @@ class WebViewScreen extends React.Component {
               marginTop: -1, // hacky fix to a 1px overflow just above header
             }}
             ref={ref => (this.webview = ref)}
-            source={{uri: this.state.webviewUrl}}
+            source={{uri: 'https://ask.halalz.org'}}
             applicationNameForUserAgent={this.state.userAgentSuffix}
             allowsBackForwardNavigationGestures={true}
             allowsInlineMediaPlayback={true}
@@ -271,7 +273,8 @@ class WebViewScreen extends React.Component {
   }
 
   _onClose() {
-    this.props.navigation.goBack();
+    // this.props.navigation.goBack();
+    console.log('Close press');
   }
 
   _onMessage(event) {
@@ -305,9 +308,10 @@ class WebViewScreen extends React.Component {
     }
 
     if (dismiss) {
+      console.log('Close pressed');
       // react-navigation back action (exits webview)
-      this.props.navigation.goBack();
-      this.siteManager.activeSite = null;
+      // this.props.navigation.goBack();
+      // this.siteManager.activeSite = null;
     }
 
     if (markRead) {

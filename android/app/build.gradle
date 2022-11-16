@@ -128,16 +128,16 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
         versionCode 125
-        versionName MYAPP_VERSION
+        versionName "1.0.0"
     }
 
     signingConfigs {
-        release {
-            storeFile file(MYAPP_RELEASE_STORE_FILE)
-            storePassword MYAPP_RELEASE_STORE_PASSWORD
-            keyAlias MYAPP_RELEASE_KEY_ALIAS
-            keyPassword MYAPP_RELEASE_KEY_PASSWORD
-        }
+        // release {
+        //     storeFile file(MYAPP_RELEASE_STORE_FILE)
+        //     storePassword MYAPP_RELEASE_STORE_PASSWORD
+        //     keyAlias MYAPP_RELEASE_KEY_ALIAS
+        //     keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        // }
     }
 
     splits {
@@ -150,13 +150,13 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.release
-            manifestPlaceholders = [permissionName: "android.permission.SYSTEM_ALERT_WINDOW"]
+        // release {
+        //     minifyEnabled enableProguardInReleaseBuilds
+        //     proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        //     signingConfig signingConfigs.release
+        //     manifestPlaceholders = [permissionName: "android.permission.SYSTEM_ALERT_WINDOW"]
 
-        }
+        // }
         debug {
             manifestPlaceholders = [permissionName: "MADE.UP.To.Make.SYSTEM_ALERT_WINDOW.removal.work"]
         }
@@ -187,18 +187,18 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
-    debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
-      exclude group:'com.facebook.fbjni'
-    }
+    // debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
+    //   exclude group:'com.facebook.fbjni'
+    // }
 
-    debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
-    }
+    // debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
+    //     exclude group:'com.facebook.flipper'
+    //     exclude group:'com.squareup.okhttp3', module:'okhttp'
+    // }
 
-    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
-    }
+    // debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
+    //     exclude group:'com.facebook.flipper'
+    // }
     implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.browser:browser:1.0.0'

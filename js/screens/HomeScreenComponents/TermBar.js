@@ -24,12 +24,14 @@ const TermBar = props => {
   const transform = [{translateY}, {scaleY}];
 
   const handleSubmitTerm = term => {
+    console.log('the term', term);
     props
       .onDidSubmitTerm(term)
       .then(() => {
         setText('');
       })
       .catch(error => {
+        console.log('eee......', error);
         setText(term);
       })
       .done();

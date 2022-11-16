@@ -32,7 +32,9 @@ class Site {
   ];
 
   static fromTerm(term) {
-    let url = '';
+    let url = 'https://ask.halalz.org';
+
+    // let url = '';
 
     term = term.trim();
     while (term.endsWith('/')) {
