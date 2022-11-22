@@ -87,8 +87,6 @@ class HomeScreen extends React.Component {
         }
       });
     } else {
-      console.log('the site.....2', url);
-
       this.donateShortcut(site);
       this.props.screenProps.openUrl(`${site.url}`);
     }

@@ -246,7 +246,7 @@ class Discourse extends React.Component {
 
   _handleSetSite() {
     this.doSearch('https://ask.halalz.org');
-    let site = this._siteManager.listSites();
+    // let site = this._siteManager.listSites();
     // console.log('the site.....dis 1', site);
 
     // this._siteManager.setActiveSite(site);
