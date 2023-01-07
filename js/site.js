@@ -32,7 +32,7 @@ class Site {
   ];
 
   static fromTerm(term) {
-    let url = 'https://ask.halalz.org';
+    let url = 'https://en.muftiz.com';
 
     // let url = '';
 

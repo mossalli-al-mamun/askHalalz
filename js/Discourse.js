@@ -244,8 +244,16 @@ class Discourse extends React.Component {
     });
   }
 
-  _handleSetSite() {
-    this.doSearch('https://ask.halalz.org');
+  async _handleSetSite() {
+    var siteUrl = await AsyncStorage.getItem('@renderSite');
+    console.log('siteUrl', siteUrl);
+
+    if (siteUrl !== null) {
+      this.doSearch(siteUrl);
+    } else {
+      this.doSearch('https://en.muftiz.com');
+    }
+
     // let site = this._siteManager.listSites();
     // console.log('the site.....dis 1', site);
 
@@ -265,7 +273,7 @@ class Discourse extends React.Component {
 
   _handleOpenUrl(event) {
     console.log('_handleOpenUrl', event);
-    this.openUrl('https://ask.halalz.org/');
+    // this.openUrl('https://en.muftiz.com/');
 
     if (event.url.startsWith('discourse://')) {
       let params = this.parseURLparameters(event.url);
@@ -336,7 +344,7 @@ class Discourse extends React.Component {
   componentDidMount() {
     console.log('the yyyyyy ');
     // this._handleSetSite();
-    // this._handleOpenUrl({url: 'https://ask.halalz.org/'});
+    // this._handleOpenUrl({url: 'https://en.muftiz.com/'});
     AppState.addEventListener('change', this._handleAppStateChange);
     Linking.addEventListener('url', this._handleOpenUrl);
     Linking.getInitialURL().then(url => {

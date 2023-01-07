@@ -18,6 +18,7 @@ import TinyColor from '../../lib/tinycolor';
 import SafariView from 'react-native-safari-view';
 import {ThemeContext} from '../ThemeContext';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const withInsets = Component => {
   return props => {
@@ -65,12 +66,13 @@ class WebViewScreen extends React.Component {
       layoutCalculated: false,
       hasNotch: this.props.screenProps.hasNotch,
       isLandscape: false,
-      webviewUrl: 'https://ask.halalz.org/',
+      webviewUrl: 'https://en.muftiz.com/',
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const theme = this.context;
+
     this.setState({
       headerBg: theme.grayBackground,
       barStyle: theme.barStyle,
@@ -88,16 +90,20 @@ class WebViewScreen extends React.Component {
     );
   }
 
-  // componentDidUpdate() {
-  //   const url = this.props.route.params.url;
-  //   console.log('The url is....1', url);
+  async componentDidUpdate() {
+    // const url = this.props.route.params.url;
+    // console.log('The url is....1', url);
 
-  //   if (url !== this.state.webviewUrl) {
-  //     this.setState({
-  //       webviewUrl: url,
-  //     });
-  //   }
-  // }
+    var siteUrl = await AsyncStorage.getItem('@renderSite');
+    console.log('siteUrl is', siteUrl);
+    console.log('siteUrl is 2', this.state.webviewUrl);
+
+    if (siteUrl !== this.state.webviewUrl) {
+      this.setState({
+        webviewUrl: siteUrl,
+      });
+    }
+  }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (nextState.headerBg !== this.state.headerBg) {
@@ -143,7 +149,7 @@ class WebViewScreen extends React.Component {
   render() {
     const theme = this.context;
     const isIpad = this.props.screenProps.deviceId.startsWith('iPad');
-    console.log('Test url ...', this.state.webviewUrl);
+    console.log('Test url ...', this.props);
 
     return (
       <Animated.View
@@ -166,7 +172,7 @@ class WebViewScreen extends React.Component {
               marginTop: -1, // hacky fix to a 1px overflow just above header
             }}
             ref={ref => (this.webview = ref)}
-            source={{uri: 'https://ask.halalz.org'}}
+            source={{uri: this.state.webviewUrl}}
             applicationNameForUserAgent={this.state.userAgentSuffix}
             allowsBackForwardNavigationGestures={true}
             allowsInlineMediaPlayback={true}
@@ -195,15 +201,19 @@ class WebViewScreen extends React.Component {
                 onClose={() => this._onClose()}
               />
             )}
-            onShouldStartLoadWithRequest={request => {
+            onShouldStartLoadWithRequest={async request => {
               console.log('onShouldStartLoadWithRequest', request);
+              // this.setState({webviewUrl: request.url});
+              // console.log('is......', this.state.webviewUrl);
+              await AsyncStorage.setItem('@renderSite', request.url);
+
               if (request.url.startsWith('discourse://')) {
                 this.props.navigation.goBack();
                 return false;
               } else {
                 // onShouldStartLoadWithRequest is sometimes triggered by ajax requests (ads, etc.)
                 // this is a workaround to avoid launching Safari for these events
-                if (request.url !== request.mainDocumentURL) {
+                if (request.url === request.mainDocumentURL) {
                   return true;
                 }
 
