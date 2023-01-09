@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="landscape" appearance="dark"/>
     <accessibilityOverrides isEnabled="YES" dynamicTypePreference="2"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -14,25 +14,31 @@
             <rect key="frame" x="0.0" y="0.0" width="937" height="690"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" highlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvs-Il-OE9">
-                    <rect key="frame" x="343.66666666666669" y="300.66666666666669" width="250.00000000000006" height="89"/>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" highlighted="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pvs-Il-OE9">
+                    <rect key="frame" x="-483" y="-851" width="1903" height="2392"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <accessibility key="accessibilityConfiguration">
                         <accessibilityTraits key="traits" none="YES"/>
                     </accessibility>
                     <rect key="contentStretch" x="0.0" y="0.0" width="0.5" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2392" id="Cvf-h3-vJH"/>
+                        <constraint firstAttribute="width" constant="1903" id="w17-Lx-WC6"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.97254901960784312" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
             <constraints>
-                <constraint firstItem="Pvs-Il-OE9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="T7i-ev-veQ"/>
-                <constraint firstItem="Pvs-Il-OE9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kcJ-7Q-2lL"/>
+                <constraint firstItem="Pvs-Il-OE9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6n1-HJ-TTh"/>
+                <constraint firstItem="Pvs-Il-OE9" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="geX-tH-HRW"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-101" y="-498"/>
+            <point key="canvasLocation" x="-101.30331753554502" y="-498.46153846153845"/>
         </view>
     </objects>
     <resources>
-        <image name="splash.png" width="250" height="89"/>
+        <image name="icon.png" width="197" height="196"/>
     </resources>
 </document>
