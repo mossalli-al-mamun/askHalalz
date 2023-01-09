@@ -244,31 +244,20 @@ class Discourse extends React.Component {
     });
   }
 
-  async _handleSetSite() {
-    var siteUrl = await AsyncStorage.getItem('@renderSite');
-    console.log('siteUrl', siteUrl);
-
-    if (siteUrl !== null) {
-      this.doSearch(siteUrl);
-    } else {
-      this.doSearch('https://en.muftiz.com');
+  async getSite() {
+    try {
+      const value = await AsyncStorage.getItem('@renderSite');
+      if (value !== null) {
+        this.doSearch(value);
+      } else {
+        this.doSearch('https://en.muftiz.com');
+      }
+    } catch (e) {
+      console.log(e);
     }
-
-    // let site = this._siteManager.listSites();
-    // console.log('the site.....dis 1', site);
-
-    // this._siteManager.setActiveSite(site);
-    // this._siteManager.generateAuthURL(site).then(url => {
-    //   console.log('the site.....dis', url);
-    //   if (this._siteManager.supportsDelegatedAuth(site)) {
-    //     console.log('the site.....dis2');
-    //     SafariWebAuth.requestAuth(url);
-    //   } else {
-    //     console.log('the site.....dis3');
-
-    //     this.props.screenProps.openUrl(url, false);
-    //   }
-    // });
+  }
+  async _handleSetSite() {
+    await this.getSite();
   }
 
   _handleOpenUrl(event) {
@@ -342,7 +331,6 @@ class Discourse extends React.Component {
   }
 
   componentDidMount() {
-    console.log('the yyyyyy ');
     // this._handleSetSite();
     // this._handleOpenUrl({url: 'https://en.muftiz.com/'});
     AppState.addEventListener('change', this._handleAppStateChange);
