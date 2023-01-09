@@ -66,7 +66,7 @@ class WebViewScreen extends React.Component {
       layoutCalculated: false,
       hasNotch: this.props.screenProps.hasNotch,
       isLandscape: false,
-      webviewUrl: 'https://en.muftiz.com/',
+      webviewUrl: '',
     };
   }
 
@@ -90,19 +90,37 @@ class WebViewScreen extends React.Component {
     );
   }
 
-  async componentDidUpdate() {
-    // const url = this.props.route.params.url;
-    // console.log('The url is....1', url);
-
-    var siteUrl = await AsyncStorage.getItem('@renderSite');
-    console.log('siteUrl is', siteUrl);
-    console.log('siteUrl is 2', this.state.webviewUrl);
-
-    if (siteUrl !== this.state.webviewUrl) {
-      this.setState({
-        webviewUrl: siteUrl,
-      });
+  async getSite() {
+    try {
+      const value = await AsyncStorage.getItem('@renderSite');
+      if (value !== null) {
+        console.log('The url is....11', value);
+        if (value !== this.state.webviewUrl) {
+          // this.setSite(value);
+          this.setState({
+            webviewUrl: value,
+          });
+        }
+      } else {
+        this.setSite('https://en.muftiz.com/');
+        this.setState({
+          webviewUrl: 'https://en.muftiz.com/',
+        });
+      }
+    } catch (e) {
+      console.log('Get site error', e);
     }
+  }
+  async setSite(value) {
+    try {
+      await AsyncStorage.setItem('@renderSite', value);
+    } catch (e) {
+      console.log('Set site error', e);
+    }
+  }
+
+  async componentDidUpdate() {
+    this.getSite();
   }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
@@ -149,8 +167,6 @@ class WebViewScreen extends React.Component {
   render() {
     const theme = this.context;
     const isIpad = this.props.screenProps.deviceId.startsWith('iPad');
-    console.log('Test url ...', this.props);
-
     return (
       <Animated.View
         onLayout={e => this._onLayout(e)}
@@ -205,7 +221,8 @@ class WebViewScreen extends React.Component {
               console.log('onShouldStartLoadWithRequest', request);
               // this.setState({webviewUrl: request.url});
               // console.log('is......', this.state.webviewUrl);
-              await AsyncStorage.setItem('@renderSite', request.url);
+              // await AsyncStorage.setItem('@renderSite', request.url);
+              this.setSite(request.url);
 
               if (request.url.startsWith('discourse://')) {
                 this.props.navigation.goBack();
