@@ -24,7 +24,6 @@
 		D09E47801F2C9D6100AFDCBE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D09E477F1F2C9D6100AFDCBE /* AVFoundation.framework */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED728353296C9F2300580E1D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ED728352296C9F2300580E1D /* icon.png */; };
-		EDC3AC8C292BE0B000D78624 /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = EDC3AC8B292BE0B000D78624 /* splash.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +78,6 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		ED728352296C9F2300580E1D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		EDC3AC8B292BE0B000D78624 /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splash.png; path = ../../../splash.png; sourceTree = "<group>"; };
 		FE533CC22B253ECF5E1E8FDF /* Pods-Discourse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Discourse.release.xcconfig"; path = "Target Support Files/Pods-Discourse/Pods-Discourse.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,7 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				ED728352296C9F2300580E1D /* icon.png */,
-				EDC3AC8B292BE0B000D78624 /* splash.png */,
 				B52583FD1E5551D7001E9B7C /* nav-icon-gray@3x.png */,
 			);
 			name = Resources;
@@ -300,7 +297,6 @@
 				ED728353296C9F2300580E1D /* icon.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				BDEA363522D818BC0040787F /* Settings.bundle in Resources */,
-				EDC3AC8C292BE0B000D78624 /* splash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

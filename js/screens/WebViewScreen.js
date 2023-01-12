@@ -19,6 +19,7 @@ import SafariView from 'react-native-safari-view';
 import {ThemeContext} from '../ThemeContext';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Platform} from 'react-native';
 
 export const withInsets = Component => {
   return props => {
@@ -72,6 +73,7 @@ class WebViewScreen extends React.Component {
 
   async componentDidMount() {
     const theme = this.context;
+    this.getSite();
 
     this.setState({
       headerBg: theme.grayBackground,
@@ -94,9 +96,8 @@ class WebViewScreen extends React.Component {
     try {
       const value = await AsyncStorage.getItem('@renderSite');
       if (value !== null) {
-        console.log('The url is....11', value);
+        // console.log('The url is....11', value);
         if (value !== this.state.webviewUrl) {
-          // this.setSite(value);
           this.setState({
             webviewUrl: value,
           });
@@ -119,8 +120,13 @@ class WebViewScreen extends React.Component {
     }
   }
 
-  async componentDidUpdate() {
-    this.getSite();
+  // async componentDidUpdate() {
+  //   this.getSite();
+  // }
+  componentDidUpdate(previousProps, previousState) {
+    // this.getSite();
+    // console.log('component 1', previousProps);
+    // console.log('component 2', previousState);
   }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
@@ -228,10 +234,21 @@ class WebViewScreen extends React.Component {
                 this.props.navigation.goBack();
                 return false;
               } else {
+                console.log(
+                  'onShouldStartLoadWithRequest 2',
+                  request.mainDocumentURL,
+                );
+
                 // onShouldStartLoadWithRequest is sometimes triggered by ajax requests (ads, etc.)
                 // this is a workaround to avoid launching Safari for these events
-                if (request.url === request.mainDocumentURL) {
-                  return true;
+                if (Platform.OS === 'ios') {
+                  if (request.url === request.mainDocumentURL) {
+                    return true;
+                  }
+                } else {
+                  if (request.url !== request.mainDocumentURL) {
+                    return true;
+                  }
                 }
 
                 // launch externally and stop loading request if external link
