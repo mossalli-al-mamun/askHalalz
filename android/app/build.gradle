@@ -130,16 +130,16 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
         versionCode 149
-        versionName MYAPP_VERSION
+        versionName '1.0.0'
     }
 
     signingConfigs {
-        release {
-            storeFile file(MYAPP_RELEASE_STORE_FILE)
-            storePassword MYAPP_RELEASE_STORE_PASSWORD
-            keyAlias MYAPP_RELEASE_KEY_ALIAS
-            keyPassword MYAPP_RELEASE_KEY_PASSWORD
-        }
+        // release {
+        //     storeFile file(MYAPP_RELEASE_STORE_FILE)
+        //     storePassword MYAPP_RELEASE_STORE_PASSWORD
+        //     keyAlias MYAPP_RELEASE_KEY_ALIAS
+        //     keyPassword MYAPP_RELEASE_KEY_PASSWORD
+        // }
     }
 
     splits {
@@ -152,13 +152,13 @@ android {
     }
 
     buildTypes {
-        release {
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            signingConfig signingConfigs.release
-            manifestPlaceholders = [permissionName: "android.permission.SYSTEM_ALERT_WINDOW"]
+        // release {
+        //     minifyEnabled enableProguardInReleaseBuilds
+        //     proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        //     signingConfig signingConfigs.release
+        //     manifestPlaceholders = [permissionName: "android.permission.SYSTEM_ALERT_WINDOW"]
 
-        }
+        // }
         debug {
             manifestPlaceholders = [permissionName: "MADE.UP.To.Make.SYSTEM_ALERT_WINDOW.removal.work"]
         }
@@ -199,6 +199,7 @@ dependencies {
     implementation "com.google.android.gms:play-services-base:16.1.0"
     // implementation 'com.google.android.gms:play-services-gcm:15.0.1'
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
+    implementation("com.google.firebase:firebase-iid:21.1.0")
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics'
 

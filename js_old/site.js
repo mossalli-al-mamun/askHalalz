@@ -6,7 +6,7 @@ import {Platform} from 'react-native';
 import _ from 'lodash';
 import Moment from 'moment';
 import DiscourseUtils from './DiscourseUtils';
-import fetch from './../lib/fetch';
+import fetch from '../lib/fetch';
 
 class Site {
   static FIELDS = [
@@ -203,7 +203,7 @@ class Site {
         Site.fromURL(this.url)
           .then(site => {
             console.log('fromUrl request for', this.url);
-            resolve(site + '/');
+            resolve(site);
           })
           .catch(e => {
             console.log(e);

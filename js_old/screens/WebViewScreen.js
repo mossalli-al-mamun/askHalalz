@@ -18,7 +18,6 @@ import TinyColor from '../../lib/tinycolor';
 import SafariView from 'react-native-safari-view';
 import {ThemeContext} from '../ThemeContext';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const withInsets = Component => {
   return props => {
@@ -47,13 +46,13 @@ class WebViewScreen extends React.Component {
     this.currentIndex = 0;
     this.safariViewVisible = false;
 
-    // SafariView.addEventListener('onShow', () => {
-    //   this.safariViewVisible = true;
-    // });
+    SafariView.addEventListener('onShow', () => {
+      this.safariViewVisible = true;
+    });
 
-    // SafariView.addEventListener('onDismiss', () => {
-    //   this.safariViewVisible = false;
-    // });
+    SafariView.addEventListener('onDismiss', () => {
+      this.safariViewVisible = false;
+    });
 
     this.state = {
       progress: 0,
@@ -66,14 +65,12 @@ class WebViewScreen extends React.Component {
       layoutCalculated: false,
       hasNotch: this.props.screenProps.hasNotch,
       isLandscape: false,
-      webviewUrl: '',
+      webviewUrl: this.props.route.params.url,
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const theme = this.context;
-    this.getSite();
-
     this.setState({
       headerBg: theme.grayBackground,
       barStyle: theme.barStyle,
@@ -91,47 +88,15 @@ class WebViewScreen extends React.Component {
     );
   }
 
-  componentDidUpdate(previousProps, previousState) {
-    // this.getSite();
-    console.log('component 1', previousProps);
-    console.log('component 2', previousState);
-  }
+  componentDidUpdate() {
+    const url = this.props.route.params.url;
 
-  async getSite() {
-    console.log('The url is....11');
-
-    try {
-      const value = await AsyncStorage.getItem('@renderSite');
-      console.log('The value is', value);
-      console.log('The value is 2', this.state.webviewUrl);
-      if (value !== null) {
-        console.log('The value is 3', this.state.webviewUrl);
-        if (value !== this.state.webviewUrl) {
-          this.setState({
-            webviewUrl: value,
-          });
-        }
-      } else {
-        this.setSite('https://en.muftiz.com/');
-        this.setState({
-          webviewUrl: 'https://en.muftiz.com/',
-        });
-      }
-    } catch (e) {
-      console.log('Get site error', e);
+    if (url !== this.state.webviewUrl) {
+      this.setState({
+        webviewUrl: url,
+      });
     }
   }
-  async setSite(value) {
-    try {
-      await AsyncStorage.setItem('@renderSite', value);
-    } catch (e) {
-      console.log('Set site error', e);
-    }
-  }
-
-  // async componentDidUpdate() {
-  //   this.getSite();
-  // }
 
   UNSAFE_componentWillUpdate(nextProps, nextState) {
     if (nextState.headerBg !== this.state.headerBg) {
@@ -177,6 +142,7 @@ class WebViewScreen extends React.Component {
   render() {
     const theme = this.context;
     const isIpad = this.props.screenProps.deviceId.startsWith('iPad');
+
     return (
       <Animated.View
         onLayout={e => this._onLayout(e)}
@@ -227,22 +193,12 @@ class WebViewScreen extends React.Component {
                 onClose={() => this._onClose()}
               />
             )}
-            onShouldStartLoadWithRequest={async request => {
+            onShouldStartLoadWithRequest={request => {
               console.log('onShouldStartLoadWithRequest', request);
-              // this.setState({webviewUrl: request.url});
-              // console.log('is......', this.state.webviewUrl);
-              // await AsyncStorage.setItem('@renderSite', request.url);
-              this.setSite(request.url);
-
               if (request.url.startsWith('discourse://')) {
                 this.props.navigation.goBack();
                 return false;
               } else {
-                console.log(
-                  'onShouldStartLoadWithRequest 2',
-                  request.url === request.mainDocumentUR,
-                );
-
                 // onShouldStartLoadWithRequest is sometimes triggered by ajax requests (ads, etc.)
                 // this is a workaround to avoid launching Safari for these events
                 if (request.url !== request.mainDocumentURL) {
@@ -315,8 +271,7 @@ class WebViewScreen extends React.Component {
   }
 
   _onClose() {
-    // this.props.navigation.goBack();
-    console.log('Close press');
+    this.props.navigation.goBack();
   }
 
   _onMessage(event) {
@@ -350,10 +305,9 @@ class WebViewScreen extends React.Component {
     }
 
     if (dismiss) {
-      console.log('Close pressed');
       // react-navigation back action (exits webview)
-      // this.props.navigation.goBack();
-      // this.siteManager.activeSite = null;
+      this.props.navigation.goBack();
+      this.siteManager.activeSite = null;
     }
 
     if (markRead) {

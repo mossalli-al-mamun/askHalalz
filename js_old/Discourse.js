@@ -464,46 +464,6 @@ class Discourse extends React.Component {
       theme: newTheme === 'dark' ? themes.dark : themes.light,
     });
   }
-  doSearch(term) {
-    if (term.length === 0) {
-      return new Promise((resolve, reject) => reject());
-    }
-
-    // this.setState({addSiteProgress: Math.random() * 0.4});
-
-    return new Promise((resolve, reject) => {
-      Site.fromTerm(term)
-        .then(site => {
-          if (site) {
-            this._siteManager.add(site);
-          }
-
-          resolve(site);
-        })
-        .catch(e => {
-          console.log(e);
-
-          // if (e === 'dupe site') {
-          //   Alert.alert(i18n.t('term_exists', {term}));
-          // } else if (e === 'bad api') {
-          //   Alert.alert(i18n.t('incorrect_url', {term}));
-          // } else {
-          //   Alert.alert(i18n.t('not_found', {term}));
-          // }
-
-          // this.setState({displayTermBar: true, addSiteProgress: 1});
-          // this.onToggleTermBar(this.state.displayTermBar);
-
-          reject('failure');
-        })
-        .finally(() => {
-          setTimeout(() => {
-            // this.setState({addSiteProgress: 0});
-          }, 1000);
-        })
-        .done();
-    });
-  }
 
   render() {
     // TODO: pass only relevant props to each screen component
@@ -519,7 +479,6 @@ class Discourse extends React.Component {
       deviceId: this.state.deviceId,
       toggleTheme: this._toggleTheme.bind(this),
     };
-    // this.doSearch('https://en.muftiz.com');
 
     return (
       <NavigationContainer>
@@ -535,16 +494,11 @@ class Discourse extends React.Component {
                 ...TransitionPresets.ModalSlideFromBottomIOS,
               };
             }}>
-            <Stack.Screen name="WebView">
-              {props => (
-                <Screens.WebView {...props} screenProps={{...screenProps}} />
-              )}
-            </Stack.Screen>
-            {/* <Stack.Screen name="Home">
+            <Stack.Screen name="Home">
               {props => (
                 <Screens.Home {...props} screenProps={{...screenProps}} />
               )}
-            </Stack.Screen> */}
+            </Stack.Screen>
             <Stack.Screen name="Notifications">
               {props => (
                 <Screens.Notifications
@@ -558,11 +512,11 @@ class Discourse extends React.Component {
                 <Screens.Settings {...props} screenProps={{...screenProps}} />
               )}
             </Stack.Screen>
-            {/* <Stack.Screen name="WebView">
+            <Stack.Screen name="WebView">
               {props => (
                 <Screens.WebView {...props} screenProps={{...screenProps}} />
               )}
-            </Stack.Screen> */}
+            </Stack.Screen>
           </Stack.Navigator>
         </ThemeContext.Provider>
       </NavigationContainer>
