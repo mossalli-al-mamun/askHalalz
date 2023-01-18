@@ -287,9 +287,11 @@ class Discourse extends React.Component {
   }
 
   componentDidMount() {
+    // this.doSearch('https://en.muftiz.com');
     AppState.addEventListener('change', this._handleAppStateChange);
     Linking.addEventListener('url', this._handleOpenUrl);
     Linking.getInitialURL().then(url => {
+      console.log('The url is here: ' + url);
       if (url) {
         this._handleOpenUrl({url: url});
       }
@@ -465,6 +467,7 @@ class Discourse extends React.Component {
     });
   }
   doSearch(term) {
+    console.log('The term is ', term);
     if (term.length === 0) {
       return new Promise((resolve, reject) => reject());
     }
@@ -519,7 +522,6 @@ class Discourse extends React.Component {
       deviceId: this.state.deviceId,
       toggleTheme: this._toggleTheme.bind(this),
     };
-    // this.doSearch('https://en.muftiz.com');
 
     return (
       <NavigationContainer>

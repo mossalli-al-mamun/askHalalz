@@ -41,6 +41,7 @@ class SiteManager {
   }
 
   add(site) {
+    console.log('Adding sites', site);
     this.sites.push(site);
     this.save();
     this.updateNativeMenu();
@@ -244,6 +245,7 @@ class SiteManager {
 
   refreshSites() {
     console.log('refresh ' + this.sites.length + ' sites');
+    console.log('refresh ' + this.sites[0]);
 
     let sites = this.sites.slice(0),
       promises = [],

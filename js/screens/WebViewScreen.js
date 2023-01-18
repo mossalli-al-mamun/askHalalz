@@ -93,8 +93,8 @@ class WebViewScreen extends React.Component {
 
   componentDidUpdate(previousProps, previousState) {
     // this.getSite();
-    console.log('component 1', previousProps);
-    console.log('component 2', previousState);
+    // console.log('component 1', previousProps);
+    // console.log('component 2', previousState);
   }
 
   async getSite() {
@@ -122,6 +122,8 @@ class WebViewScreen extends React.Component {
     }
   }
   async setSite(value) {
+    console.log('The url is.... Set');
+
     try {
       await AsyncStorage.setItem('@renderSite', value);
     } catch (e) {
@@ -240,13 +242,19 @@ class WebViewScreen extends React.Component {
               } else {
                 console.log(
                   'onShouldStartLoadWithRequest 2',
-                  request.url === request.mainDocumentUR,
+                  request.url === request.mainDocumentURL,
                 );
 
                 // onShouldStartLoadWithRequest is sometimes triggered by ajax requests (ads, etc.)
                 // this is a workaround to avoid launching Safari for these events
-                if (request.url !== request.mainDocumentURL) {
-                  return true;
+                if (Platform.OS === 'ios') {
+                  if (request.url === request.mainDocumentURL) {
+                    return true;
+                  }
+                } else {
+                  if (request.url !== request.mainDocumentURL) {
+                    return true;
+                  }
                 }
 
                 // launch externally and stop loading request if external link

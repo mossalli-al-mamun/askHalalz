@@ -79,11 +79,11 @@ class ErrorScreen extends React.Component {
             </View>
             <View style={styles.section}>
               {this._renderButton(this.props.onRefresh, 'ios-refresh', theme)}
-              {this._renderButton(
+              {/* {this._renderButton(
                 this.props.onClose,
                 'ios-close-circle-outline',
                 theme,
-              )}
+              )} */}
             </View>
           </Animated.View>
         )}
