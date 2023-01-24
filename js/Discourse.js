@@ -291,7 +291,6 @@ class Discourse extends React.Component {
     AppState.addEventListener('change', this._handleAppStateChange);
     Linking.addEventListener('url', this._handleOpenUrl);
     Linking.getInitialURL().then(url => {
-      console.log('The url is here: ' + url);
       if (url) {
         this._handleOpenUrl({url: url});
       }
@@ -467,7 +466,6 @@ class Discourse extends React.Component {
     });
   }
   doSearch(term) {
-    console.log('The term is ', term);
     if (term.length === 0) {
       return new Promise((resolve, reject) => reject());
     }
@@ -484,7 +482,7 @@ class Discourse extends React.Component {
           resolve(site);
         })
         .catch(e => {
-          console.log(e);
+          console.log('The error is', e);
 
           // if (e === 'dupe site') {
           //   Alert.alert(i18n.t('term_exists', {term}));

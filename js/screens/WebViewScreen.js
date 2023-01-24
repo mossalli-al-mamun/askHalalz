@@ -92,18 +92,12 @@ class WebViewScreen extends React.Component {
   }
 
   componentDidUpdate(previousProps, previousState) {
-    // this.getSite();
-    // console.log('component 1', previousProps);
-    // console.log('component 2', previousState);
+    console.log('previousProps', previousProps);
   }
 
   async getSite() {
-    console.log('The url is....11');
-
     try {
       const value = await AsyncStorage.getItem('@renderSite');
-      console.log('The value is', value);
-      console.log('The value is 2', this.state.webviewUrl);
       if (value !== null) {
         console.log('The value is 3', this.state.webviewUrl);
         if (value !== this.state.webviewUrl) {
@@ -122,8 +116,6 @@ class WebViewScreen extends React.Component {
     }
   }
   async setSite(value) {
-    console.log('The url is.... Set');
-
     try {
       await AsyncStorage.setItem('@renderSite', value);
     } catch (e) {
@@ -231,9 +223,6 @@ class WebViewScreen extends React.Component {
             )}
             onShouldStartLoadWithRequest={async request => {
               console.log('onShouldStartLoadWithRequest', request);
-              // this.setState({webviewUrl: request.url});
-              // console.log('is......', this.state.webviewUrl);
-              // await AsyncStorage.setItem('@renderSite', request.url);
               this.setSite(request.url);
 
               if (request.url.startsWith('discourse://')) {

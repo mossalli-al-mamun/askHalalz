@@ -203,7 +203,6 @@ class Site {
         Site.fromURL(this.url)
           .then(site => {
             console.log('fromUrl request for', this.url);
-            console.log('fromUrl request for 2', site);
             resolve(site + '/');
           })
           .catch(e => {
